@@ -1,17 +1,20 @@
-#include <iostream>
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#include <sdl_mixer.h>
-
-using namespace std;
+#include "game_screen.h"
 
 int main(int arv, char * argc[])
 {
-	cout << "test add sdl file\n";
+	if (!GAME_SCREEN.INIT())
+	{
+		cout << "GAME_SCREEN: fail at INIT()\n";
+		return -1;
+	}
 
-	cout << "result: program run normaly";
+	if (!GAME_SCREEN.LOAD_MEDIA())
+	{
+		cout << "GAME_SCREEN: fail at LOAD_MEDIA()\n";
+		return -1;
+	}
 
+	GAME_SCREEN.DISPLAY_SCREEN();
 
 	return 0;
 }
