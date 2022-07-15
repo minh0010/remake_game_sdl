@@ -28,17 +28,20 @@ bool SCREEN::INIT()
 		return false;
 	}
 
-	WINDOW = SDL_CreateWindow(GAME_NAME.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 500, 500, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+	WINDOW = SDL_CreateWindow(GAME_NAME.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1000, 700, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 	if (WINDOW == NULL)
 	{
 		cout << SDL_Error;
 		return false;
 	}
-
+	
 	RENDERER = SDL_CreateRenderer(WINDOW, -1, SDL_RENDERER_ACCELERATED);
 	if (RENDERER == NULL)
 	{
-		cout << SDL_Error;
+		cout << string(60, '-') << '\n';
+		cout << "SDL get fail\nCode: " << SDL_Error << '\n';
+		cout << "Problem: somthing wrong with SDL_CreateRenderer\n";
+		cout << string(60, '-') << '\n';
 		return false;
 	}
 
@@ -66,6 +69,11 @@ bool SCREEN::INIT()
 
 bool SCREEN::LOAD_MEDIA()
 {
+	if (!test.Load_Texture_From_Picture(RENDERER, "GAME_TEXTURE/BACKGROUND/start_screen.png"))
+	{
+		cout << "Bug from: TEXTURE test\n";
+		cout << string(60, '-');
+	}
 	return true;
 }
 
@@ -85,6 +93,8 @@ void SCREEN::DISPLAY_SCREEN()
 
 		SDL_SetRenderDrawColor(RENDERER, 0,0,0,255);
 		SDL_RenderClear(RENDERER);
+
+		test.Render_Texture_On_Screen(RENDERER);
 
 		SDL_RenderPresent(RENDERER);
 	}

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "TEXTURE.h"
+
 #include <iostream>
 
 using namespace std;

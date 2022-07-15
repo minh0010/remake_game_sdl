@@ -21,9 +21,15 @@
     <ClCompile Include="game_screen.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="TEXTURE.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TEXTURE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
